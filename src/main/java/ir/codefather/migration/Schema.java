@@ -9,6 +9,9 @@ package ir.codefather.migration;
  *
  */
 public class Schema {
+	/**
+	 * this field responsible run sql commands
+	 */
 	SqlRunner sqlRunner;
 
 }
