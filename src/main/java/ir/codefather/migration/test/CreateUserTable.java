@@ -9,7 +9,7 @@ import ir.codefather.migration.Migration;
  *
  *         Test migration system
  */
-@MigrateInfo(version = "1.2019.08.26.9.32.40")
+@MigrateInfo(version = "2019.09.26.9.32.40")
 public class CreateUserTable implements Migration {
 
 	public void up() {

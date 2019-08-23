@@ -1,5 +1,6 @@
 package ir.codefather.migration;
 
+import java.util.List;
 import java.util.Set;
 
 import org.reflections.Reflections;
@@ -24,8 +25,9 @@ public class MigrationRunner {
 		Reflections reflections = new Reflections("ir.codefather");
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(MigrateInfo.class);
 		MigrationSorter sorter = new MigrationSorter(classes);
-		sorter.sort();
-		System.out.println(sorter.compareVersion("2019.10.26.9.32.40", "2019.09.26.9.32.40"));
+		List<Class<?>> sortedClasses = sorter.sort();
+		
+		sortedClasses.forEach(action->System.out.println(action.getName()));
 	}
 
 

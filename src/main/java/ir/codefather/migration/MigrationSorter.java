@@ -1,6 +1,7 @@
 package ir.codefather.migration;
 
-import java.util.Deque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class MigrationSorter {
 	/**
 	 * store sorted migrations
 	 */
-	Deque<Class<?>> sortedMigrations;
+	List<Class<?>> sortedMigrations;
 
 
 
@@ -42,12 +43,32 @@ public class MigrationSorter {
 	 * 
 	 * @return
 	 */
-	public Deque<Class<?>> sort() {
-		for (Class<?> klass : migrationsClasses) {
+	public List<Class<?>> sort() {
+		sortedMigrations = new ArrayList<>();
+		
+		for (Class klass : migrationsClasses) { 
+			
 			MigrateInfo migrateAnnotation = (MigrateInfo) klass.getAnnotation(MigrateInfo.class);
-			System.out.println(migrateAnnotation.version());
+			
+			if (sortedMigrations.size() == 0)
+				sortedMigrations.add(klass);
+
+			for (int i = 0; i < sortedMigrations.size(); i++) {
+				
+				MigrateInfo listedMigration = (MigrateInfo) sortedMigrations.get(i).getAnnotation(MigrateInfo.class);
+				Short compareResult = compareVersion(listedMigration.version(), migrateAnnotation.version());
+				
+				if (compareResult == 1) 
+					sortedMigrations.add(i, klass);
+				
+				
+				if(compareResult == -1)
+					sortedMigrations.add(klass);
+
+			}
 		}
-		return null;
+		
+		return sortedMigrations;
 	}
 
 
@@ -65,7 +86,7 @@ public class MigrationSorter {
 	public short compareVersion(String v1, String v2) {
 		String[] spilitedV1 = v1.split("\\.");
 		String[] spilitedV2 = v2.split("\\.");
-		
+
 		if (spilitedV1.length < spilitedV2.length)
 			return compareBaseOnV1Length(spilitedV1, spilitedV2);
 
@@ -139,7 +160,6 @@ public class MigrationSorter {
 			Float versionNum1 = Float.parseFloat(v1[i]);
 			Float versionNum2 = Float.parseFloat(v2[i]);
 
-			System.out.println(versionNum1 + " compare with " + versionNum2);
 			if (versionNum1 > versionNum2)
 				return 1;
 			if (versionNum1 < versionNum2)
