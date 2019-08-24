@@ -25,8 +25,10 @@ public class MigrationRunner {
 		Reflections reflections = new Reflections("ir.codefather");
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(MigrateInfo.class);
 		MigrationSorter sorter = new MigrationSorter(classes);
+		System.out.println("before sort");
 		List<Class<?>> sortedClasses = sorter.sort();
-		
+		System.out.println("after sort");
+
 		sortedClasses.forEach(action->System.out.println(action.getName()));
 	}
 
