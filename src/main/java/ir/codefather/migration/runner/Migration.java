@@ -1,4 +1,4 @@
-package ir.codefather.migration;
+package ir.codefather.migration.runner;
 
 /**
  * 
