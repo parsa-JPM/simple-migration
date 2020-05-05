@@ -19,7 +19,7 @@ public class Schema {
     public static void rename() {
     }
 
-    public static void drop() {
+    public static void drop(String tableName) {
     }
 
 }

@@ -11,12 +11,7 @@ import ir.codefather.migration.sql.Schema;
 public class CreateRoleTable implements Migration {
 
     public void up() {
-        Schema.create("users", (detail) -> {
-            System.out.println("in consumer");
-            detail.increments("user_id");
-        });
 
-        System.out.println("up method in role migration");
     }
 
     public void down() {

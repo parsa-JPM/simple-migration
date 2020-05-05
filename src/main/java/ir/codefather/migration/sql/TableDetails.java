@@ -1,7 +1,7 @@
 package ir.codefather.migration.sql;
 
 /**
- * This class's responsible is draw schema detail
+ * This class's responsible is draw schema detail (columns)
  */
 public interface TableDetails {
 

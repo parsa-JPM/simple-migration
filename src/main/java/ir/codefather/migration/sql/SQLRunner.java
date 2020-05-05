@@ -3,7 +3,7 @@ package ir.codefather.migration.sql;
 import java.util.function.Consumer;
 
 /**
- * it responsible to run sql created by TableDetails
+ * it responsible to run sql of migration and make changes in DB
  */
 public interface SQLRunner {
     /**

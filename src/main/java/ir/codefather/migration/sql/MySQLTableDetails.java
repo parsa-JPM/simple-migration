@@ -3,6 +3,7 @@ package ir.codefather.migration.sql;
 public class MySQLTableDetails implements TableDetails {
 
     private final String tableName;
+    public String generatedSQL = "";
 
     public MySQLTableDetails(String tableName) {
         this.tableName = tableName;
@@ -15,7 +16,7 @@ public class MySQLTableDetails implements TableDetails {
 
     @Override
     public Column increments(String name) {
-        System.out.println(name + " " + "is key of " + tableName + " table");
+        generatedSQL += " create Id in table " + tableName;
         return null;
     }
 
@@ -87,5 +88,10 @@ public class MySQLTableDetails implements TableDetails {
     @Override
     public void renameColumn(String from, String to) {
 
+    }
+
+    @Override
+    public String toString() {
+        return generatedSQL;
     }
 }
