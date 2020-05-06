@@ -1,7 +1,6 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.table;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * This is a facade class that help client to generate sql of migration

@@ -2,7 +2,6 @@ package ir.codefather.migration.test;
 
 import ir.codefather.migration.runner.MigrateInfo;
 import ir.codefather.migration.runner.Migration;
-import ir.codefather.migration.sql.Schema;
 
 /**
  * @author parsa

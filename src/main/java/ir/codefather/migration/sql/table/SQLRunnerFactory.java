@@ -1,4 +1,6 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.table;
+
+import ir.codefather.migration.sql.mysql.MySQLRunner;
 
 public class SQLRunnerFactory {
     /**

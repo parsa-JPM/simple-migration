@@ -1,4 +1,8 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.mysql;
+
+import ir.codefather.migration.sql.table.SQLRunner;
+import ir.codefather.migration.sql.table.TableDetails;
+import ir.codefather.migration.sql.table.TableDetailsFactory;
 
 import java.util.function.Consumer;
 

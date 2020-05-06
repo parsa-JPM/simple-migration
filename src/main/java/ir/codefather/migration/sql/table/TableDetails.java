@@ -1,13 +1,16 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.table;
+
+import ir.codefather.migration.sql.column.Column;
+import ir.codefather.migration.sql.column.IncrementColumn;
 
 /**
  * This class's responsible is draw schema detail (columns)
  */
 public interface TableDetails {
 
-    Column bigIncrements(String name);
+    IncrementColumn bigIncrements(String name);
 
-    Column increments(String name);
+    IncrementColumn increments(String name);
 
     Column timestamps();
 

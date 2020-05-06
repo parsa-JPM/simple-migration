@@ -1,4 +1,4 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.column;
 
 public interface Column {
     void index();

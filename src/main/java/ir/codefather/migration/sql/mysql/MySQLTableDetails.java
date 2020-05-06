@@ -1,4 +1,8 @@
-package ir.codefather.migration.sql;
+package ir.codefather.migration.sql.mysql;
+
+import ir.codefather.migration.sql.column.Column;
+import ir.codefather.migration.sql.column.IncrementColumn;
+import ir.codefather.migration.sql.table.TableDetails;
 
 public class MySQLTableDetails implements TableDetails {
 
@@ -10,13 +14,14 @@ public class MySQLTableDetails implements TableDetails {
     }
 
     @Override
-    public Column bigIncrements(String name) {
+    public IncrementColumn bigIncrements(String name) {
         return null;
     }
 
     @Override
-    public Column increments(String name) {
+    public IncrementColumn increments(String name) {
         generatedSQL += " create Id in table " + tableName;
+
         return null;
     }
 
@@ -37,6 +42,9 @@ public class MySQLTableDetails implements TableDetails {
 
     @Override
     public Column string(String name, int length) {
+        // col = new StringColumn(name,length)
+        // strings.add(col)
+        // return col
         return null;
     }
 
