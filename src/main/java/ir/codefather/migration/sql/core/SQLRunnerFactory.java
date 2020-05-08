@@ -1,4 +1,4 @@
-package ir.codefather.migration.sql.table;
+package ir.codefather.migration.sql.core;
 
 import ir.codefather.migration.sql.mysql.MySQLRunner;
 

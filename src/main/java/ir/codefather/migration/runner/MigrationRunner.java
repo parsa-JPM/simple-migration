@@ -2,6 +2,7 @@ package ir.codefather.migration.runner;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Set;
 

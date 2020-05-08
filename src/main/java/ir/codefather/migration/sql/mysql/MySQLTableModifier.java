@@ -1,17 +1,24 @@
 package ir.codefather.migration.sql.mysql;
 
 import ir.codefather.migration.sql.column.Column;
+import ir.codefather.migration.sql.column.ColumnFactory;
 import ir.codefather.migration.sql.column.IncrementColumn;
-import ir.codefather.migration.sql.table.TableDetails;
+import ir.codefather.migration.sql.column.IncrementFactory;
+import ir.codefather.migration.sql.core.TableModifier;
+import org.jooq.CreateTableColumnStep;
+import org.jooq.impl.SQLDataType;
 
-public class MySQLTableDetails implements TableDetails {
+public class MySQLTableModifier implements TableModifier {
 
-    private final String tableName;
-    public String generatedSQL = "";
+    /**
+     * it will interact with Jooq
+     */
+    private final CreateTableColumnStep columnStep;
 
-    public MySQLTableDetails(String tableName) {
-        this.tableName = tableName;
+    public MySQLTableModifier(CreateTableColumnStep columnStep) {
+        this.columnStep = columnStep;
     }
+
 
     @Override
     public IncrementColumn bigIncrements(String name) {
@@ -19,10 +26,11 @@ public class MySQLTableDetails implements TableDetails {
     }
 
     @Override
-    public IncrementColumn increments(String name) {
-        generatedSQL += " create Id in table " + tableName;
+    public MySQLIncrementColumn increments(String name) {
+        IncrementColumn incrementColumn = IncrementFactory.create();
+        incrementColumn.setName(name);
 
-        return null;
+        return (MySQLIncrementColumn) incrementColumn;
     }
 
     @Override
@@ -42,10 +50,13 @@ public class MySQLTableDetails implements TableDetails {
 
     @Override
     public Column string(String name, int length) {
-        // col = new StringColumn(name,length)
-        // strings.add(col)
-        // return col
-        return null;
+
+        //TODO we must provide other features like nullable and index and ... so we need this obj late
+        // Todo we can use map(name -> Column)
+        columnStep.column(name, SQLDataType.VARCHAR(length));
+
+
+        return new MySQLBaseColumn();
     }
 
     @Override
@@ -86,20 +97,5 @@ public class MySQLTableDetails implements TableDetails {
     @Override
     public Column booleanCol(String name) {
         return null;
-    }
-
-    @Override
-    public void dropColumn(String... names) {
-
-    }
-
-    @Override
-    public void renameColumn(String from, String to) {
-
-    }
-
-    @Override
-    public String toString() {
-        return generatedSQL;
     }
 }

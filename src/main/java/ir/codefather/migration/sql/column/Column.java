@@ -1,6 +1,8 @@
 package ir.codefather.migration.sql.column;
 
 public interface Column {
+    void setName(String name);
+
     void index();
 
     void first();

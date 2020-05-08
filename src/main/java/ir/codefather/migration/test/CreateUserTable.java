@@ -2,7 +2,7 @@ package ir.codefather.migration.test;
 
 import ir.codefather.migration.runner.MigrateInfo;
 import ir.codefather.migration.runner.Migration;
-import ir.codefather.migration.sql.table.Schema;
+import ir.codefather.migration.sql.core.Schema;
 
 /**
  * @author parsa
@@ -16,6 +16,7 @@ public class CreateUserTable implements Migration {
         Schema.create("users", (detail) -> {
             detail.increments("id");
             detail.string("name", 100);
+            detail.string("family", 100);
             detail.timestamps();
         });
     }

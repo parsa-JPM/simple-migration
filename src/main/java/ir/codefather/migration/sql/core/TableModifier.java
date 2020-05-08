@@ -1,4 +1,4 @@
-package ir.codefather.migration.sql.table;
+package ir.codefather.migration.sql.core;
 
 import ir.codefather.migration.sql.column.Column;
 import ir.codefather.migration.sql.column.IncrementColumn;
@@ -6,7 +6,7 @@ import ir.codefather.migration.sql.column.IncrementColumn;
 /**
  * This class's responsible is draw schema detail (columns)
  */
-public interface TableDetails {
+public interface TableModifier {
 
     IncrementColumn bigIncrements(String name);
 
@@ -35,9 +35,4 @@ public interface TableDetails {
     Column floatCol(String name);
 
     Column booleanCol(String name);
-
-    void dropColumn(String... names);
-
-    void renameColumn(String from, String to);
-
 }

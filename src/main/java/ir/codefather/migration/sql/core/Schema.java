@@ -1,4 +1,4 @@
-package ir.codefather.migration.sql.table;
+package ir.codefather.migration.sql.core;
 
 import java.util.function.Consumer;
 
@@ -7,7 +7,7 @@ import java.util.function.Consumer;
  */
 public class Schema {
 
-    public static void create(String tableName, Consumer<TableDetails> details) {
+    public static void create(String tableName, Consumer<TableModifier> details) {
         SQLRunner runner = SQLRunnerFactory.create();
         runner.create(tableName, details);
     }
